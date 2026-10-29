@@ -4,33 +4,137 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KD Farm and Garden LLC</title>
-<meta name="description" content="KD Farm and Garden LLC builds iPhone and iPad apps.">
+<meta name="description" content="KD Farm and Garden LLC builds iPhone and iPad apps. This page runs on zero JavaScript.">
+<meta name="theme-color" content="#06140d">
+<!-- Neon blueprint prototype (Creative, Oct 29). Zero JavaScript, no images, no external fonts, no trackers. -->
 <style>
-  :root { --bg:#fbfaf6; --text:#1f2a1f; --muted:#5b665b; --accent:#2f7d4a; --line:#e3e6dc; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#141a14; --text:#eef2ea; --muted:#a9b3a6; --accent:#6cc48a; --line:#2a332a; } }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 640px; margin: 0 auto; padding: 72px 20px 48px; }
-  h1 { font-size: 2rem; line-height:1.2; margin:0 0 12px; }
-  p { margin: 0 0 16px; }
-  .muted { color: var(--muted); }
-  a { color: var(--accent); }
-  footer { border-top:1px solid var(--line); margin-top:48px; padding-top:20px; font-size:15px; color:var(--muted); }
-  footer a { margin-right: 16px; }
-  h2 { font-size: 1.2rem; margin-top: 32px; }
-  ul { padding-left: 20px; }
+  :root { --bg:#06140d; --ink:#f3f0e4; --muted:#9db3a2; --lime:#b6f77a; --line:#8ef08f; --glow:rgba(120,255,140,.55); --card:rgba(10,36,22,.7); --edge:rgba(142,240,143,.35); --pink:#ff4fa0; --gold:#ffd23f; --sky:#7fd8ff; }
+  * { box-sizing:border-box; }
+  html { color-scheme: dark; }
+  body { margin:0; color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at 1px 1px, rgba(142,240,143,.13) 1px, transparent 1.5px) 0 0/28px 28px, radial-gradient(ellipse at 75% 40%, #0c2a19 0%, var(--bg) 60%); background-color:var(--bg); min-height:100vh; }
+  a { color:var(--lime); }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 24px; }
+  header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:24px 0; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:12px; color:var(--ink); text-decoration:none; font:700 1.4rem/1 Georgia, "Iowan Old Style", "Times New Roman", serif; }
+  .brand svg { width:30px; height:30px; filter:drop-shadow(0 0 6px var(--glow)); }
+  nav a { margin-left:28px; color:var(--ink); text-decoration:none; font:600 1rem Georgia, serif; }
+  nav a:hover, nav a:focus-visible { color:var(--lime); text-shadow:0 0 12px var(--glow); }
+  a:focus-visible { outline:2px solid var(--lime); outline-offset:4px; border-radius:6px; }
+
+  .hero { display:grid; grid-template-columns: 1fr 1.1fr; gap:40px; align-items:center; padding:12px 0 56px; }
+  h1 { margin:0 0 26px; font:800 clamp(3rem, 9vw, 7.4rem)/.9 Georgia, "Iowan Old Style", "Times New Roman", serif; letter-spacing:-.02em; }
+  h1 .kb { display:block; color:var(--lime); text-shadow:0 0 28px rgba(182,247,122,.35); }
+  h1 .js { display:block; font-size:.62em; margin-top:.12em; }
+  .code { background:var(--card); border:1px solid var(--edge); border-radius:16px; padding:18px 22px; font:500 clamp(.95rem,1.6vw,1.2rem)/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; margin:0 0 22px; overflow-x:auto; }
+  .k { color:var(--pink); } .p { color:var(--sky); } .n { color:var(--gold); } .v { color:var(--lime); }
+  .badges { display:flex; flex-wrap:wrap; gap:12px; padding:0; margin:0 0 8px; list-style:none; }
+  .badges li { border:1.5px solid var(--edge); border-radius:999px; padding:9px 18px; font:600 .95rem Georgia, serif; box-shadow:0 0 14px rgba(120,255,140,.12) inset; }
+  .lede { color:var(--muted); margin:18px 0 0; max-width:40ch; }
+
+  .gh { width:100%; height:auto; overflow:visible; }
+  .gh .lines, .gh .ln, .gh .stem { fill:none; stroke:var(--line); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 5px var(--glow)); }
+  .gh .stem { stroke:#5fd36f; stroke-width:7; filter:none; }
+  /* 1. The greenhouse draws itself, line by line. */
+  .draw * { stroke-dasharray:2400; stroke-dashoffset:2400; animation: draw 2.2s ease-out var(--d) forwards; }
+  @keyframes draw { to { stroke-dashoffset:0; } }
+  /* 2. The lamps switch on. */
+  .lamp { opacity:0; animation: on .5s steps(2, end) var(--d) forwards; }
+  .bulb { fill:#fff3b0; filter:drop-shadow(0 0 10px #ffe680) drop-shadow(0 0 22px #ffd23f); }
+  @keyframes on { to { opacity:1; } }
+  /* 3. The seeds grow. */
+  .grow { transform:scaleY(0); animation: grow 1.6s cubic-bezier(.2,.9,.3,1.2) var(--d) forwards; }
+  @keyframes grow { to { transform:scaleY(1); } }
+  /* 4. Pollen keeps drifting. */
+  .spark { opacity:0; animation: drift 5s ease-in-out var(--d) infinite; }
+  @keyframes drift { 0%{opacity:0; transform:translateY(8px)} 30%{opacity:1} 100%{opacity:0; transform:translateY(-34px)} }
+
+  .shelf { border-top:1px solid var(--edge); padding:44px 0 20px; }
+  .shelf h2 { margin:0 0 6px; font:700 2rem/1.2 Georgia, serif; }
+  .shelf > p { color:var(--muted); margin:0 0 24px; }
+  .pots { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; list-style:none; padding:0; margin:0; }
+  .pots li { background:var(--card); border:1px solid var(--edge); border-radius:18px; padding:22px; }
+  .pots h3 { margin:0 0 4px; font:700 1.2rem/1.3 Georgia, serif; }
+  .pots p { margin:0; color:var(--muted); font-size:15px; }
+  .tag { display:inline-block; font:600 12px/1 ui-monospace, Menlo, monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--lime); margin-bottom:12px; }
+  footer { border-top:1px solid var(--edge); margin-top:40px; padding:22px 0 40px; font-size:15px; color:var(--muted); }
+  footer a { margin-right:16px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns:1fr; }
+    .pots { grid-template-columns:1fr; }
+    nav a { margin:0 20px 0 0; }
+  }
+  /* Reduced motion: everything appears finished, nothing moves. */
+  @media (prefers-reduced-motion: reduce) {
+    .draw *, .lamp, .grow, .spark { animation:none; stroke-dashoffset:0; opacity:1; transform:none; }
+    .spark { opacity:.8; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1>KD Farm and Garden LLC</h1>
-  <p>We build iPhone and iPad apps: practical tools for people who work on homes, and simple, colorful games for families.</p>
-  <p class="muted">A small Texas software studio.</p>
-  <p>Contact: <a href="mailto:hello@kdfarmandgarden.com">hello@kdfarmandgarden.com</a></p>
-  <footer>
-    <a href="/support/">Support</a><a href="/contact/">Contact</a>
-    <span>© 2026 KD Farm and Garden LLC, Texas</span>
-  </footer>
-</main>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/" aria-label="KD Farm and Garden, home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V11" stroke="#8ef08f" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M12 12C12 7 8.5 4 3.5 4 3.5 9 7 12 12 12Z" fill="#5fd36f"/><path d="M12 10.5C12 6.5 15 3.5 20.5 3.5 20.5 8 17 10.5 12 10.5Z" fill="#b6f77a"/></svg>
+      KD Farm &amp; Garden
+    </a>
+    <nav aria-label="Main"><a href="#lab">Lab</a><a href="/support/">Support</a><a href="/contact/">Contact</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1><span class="kb">0 KB</span><span class="js">of JavaScript.</span></h1>
+        <pre class="code" aria-label="CSS code sample"><span class="k">.seed</span> {
+  <span class="p">animation:</span> grow <span class="n">4s</span> <span class="v">ease-out</span> both;
+}</pre>
+        <ul class="badges" aria-label="Facts about this page">
+          <li>15 KB total</li><li>No trackers</li><li>Motion-safe</li>
+        </ul>
+        <p class="lede">KD Farm and Garden makes apps that make people happy. This whole page, greenhouse included, is drawn and grown in plain HTML and CSS.</p>
+      </div>
+      <svg class="gh" viewBox="0 0 900 760" role="img" aria-labelledby="ghT">
+<title id="ghT">A glowing line drawing of a greenhouse that draws itself, then fills with growing flowers.</title>
+<g class="lines"><g class="draw" style="--d:0.00s"><rect x="50" y="700" width="800" height="36" /></g>
+<g class="draw" style="--d:0.12s"><path d="M380 700 v-14 h140 v14 M395 686 v-12 h110 v12" /></g>
+<g class="draw" style="--d:0.24s"><path d="M60 700 V370 M840 700 V370 M60 370 H840" /></g>
+<g class="draw" style="--d:0.36s"><path d="M60 470 H390 M510 470 H840" /></g>
+<g class="draw" style="--d:0.48s"><path d="M80 690 V430 A35.0 35.0 0 0 1 150 430 V690 Z" /></g>
+<g class="draw" style="--d:0.60s"><path d="M115.0 395.0 V690 M80 560 H150" /></g>
+<g class="draw" style="--d:0.72s"><path d="M170 690 V430 A35.0 35.0 0 0 1 240 430 V690 Z" /></g>
+<g class="draw" style="--d:0.84s"><path d="M205.0 395.0 V690 M170 560 H240" /></g>
+<g class="draw" style="--d:0.96s"><path d="M260 690 V430 A35.0 35.0 0 0 1 330 430 V690 Z" /></g>
+<g class="draw" style="--d:1.08s"><path d="M295.0 395.0 V690 M260 560 H330" /></g>
+<g class="draw" style="--d:1.20s"><path d="M570 690 V430 A35.0 35.0 0 0 1 640 430 V690 Z" /></g>
+<g class="draw" style="--d:1.32s"><path d="M605.0 395.0 V690 M570 560 H640" /></g>
+<g class="draw" style="--d:1.44s"><path d="M660 690 V430 A35.0 35.0 0 0 1 730 430 V690 Z" /></g>
+<g class="draw" style="--d:1.56s"><path d="M695.0 395.0 V690 M660 560 H730" /></g>
+<g class="draw" style="--d:1.68s"><path d="M750 690 V430 A35.0 35.0 0 0 1 820 430 V690 Z" /></g>
+<g class="draw" style="--d:1.80s"><path d="M785.0 395.0 V690 M750 560 H820" /></g>
+<g class="draw" style="--d:1.92s"><path d="M300 370 V250 H600 V370" /></g>
+<g class="draw" style="--d:2.04s"><path d="M330 370 V300 A40 40 0 0 1 410 300 V370 M490 370 V300 A40 40 0 0 1 570 300 V370" /></g>
+<g class="draw" style="--d:2.16s"><path d="M30 372 L300 250 L450 120 L600 250 L870 372" /></g>
+<g class="draw" style="--d:2.28s"><path d="M60 360 L300 250 M840 360 L600 250" /></g>
+<g class="draw" style="--d:2.40s"><path d="M300 250 L450 175 L600 250" /></g>
+<g class="draw" style="--d:2.52s"><path d="M450 120 V72" /><circle cx="450" cy="60" r="12" /></g>
+<g class="draw" style="--d:2.64s"><circle cx="450" cy="212" r="30" /><circle cx="450" cy="318" r="34" /></g>
+<g class="draw" style="--d:2.76s"><path d="M392 690 V520 A58 58 0 0 1 508 520 V690 M450 462 V690" /></g></g><g class="lamp" style="--d:2.20s"><path class="ln" d="M230 370 V410" /><path class="ln" d="M208 430 A22 22 0 0 1 252 430 Z" /><circle class="bulb" cx="230" cy="436" r="9" /></g><g class="lamp" style="--d:2.45s"><path class="ln" d="M450 370 V410" /><path class="ln" d="M428 430 A22 22 0 0 1 472 430 Z" /><circle class="bulb" cx="450" cy="436" r="9" /></g><g class="lamp" style="--d:2.70s"><path class="ln" d="M670 370 V410" /><path class="ln" d="M648 430 A22 22 0 0 1 692 430 Z" /><circle class="bulb" cx="670" cy="436" r="9" /></g><g class="flowers"><g class="grow" style="--d:2.60s;transform-origin:115px 690px"><path class="stem" d="M115 690 V570" /><ellipse cx="91" cy="656.4" rx="26" ry="11" transform="rotate(-30 91 656.4)" fill="#3fbf5a"/><ellipse cx="139" cy="636.0" rx="26" ry="11" transform="rotate(30 139 636.0)" fill="#5fd36f"/><circle cx="115" cy="558" r="16" fill="#9be86b"/></g><g class="grow" style="--d:2.78s;transform-origin:205px 690px"><path class="stem" d="M205 690 V500" /><ellipse cx="181" cy="636.8" rx="26" ry="11" transform="rotate(-30 181 636.8)" fill="#3fbf5a"/><ellipse cx="229" cy="604.5" rx="26" ry="11" transform="rotate(30 229 604.5)" fill="#5fd36f"/><ellipse cx="181" cy="572.2" rx="26" ry="11" transform="rotate(-30 181 572.2)" fill="#5fd36f"/><path d="M165 500 Q205 560 245 500 L227 474 L205 496 L183 474 Z" fill="#ff4fa0"/><circle cx="205" cy="470" r="22" fill="#ff4fa0"/></g><g class="grow" style="--d:2.96s;transform-origin:300px 690px"><path class="stem" d="M300 690 V460" /><ellipse cx="276" cy="625.6" rx="26" ry="11" transform="rotate(-30 276 625.6)" fill="#3fbf5a"/><ellipse cx="324" cy="586.5" rx="26" ry="11" transform="rotate(30 324 586.5)" fill="#5fd36f"/><ellipse cx="276" cy="547.4" rx="26" ry="11" transform="rotate(-30 276 547.4)" fill="#5fd36f"/><path d="M264 450 A36 36 0 0 0 336 450 Z" fill="#ff9a76"/><circle cx="300" cy="436" r="14" fill="#ffe680"/></g><g class="grow" style="--d:3.14s;transform-origin:450px 690px"><path class="stem" d="M450 690 V420" /><ellipse cx="426" cy="614.4" rx="26" ry="11" transform="rotate(-30 426 614.4)" fill="#3fbf5a"/><ellipse cx="474" cy="568.5" rx="26" ry="11" transform="rotate(30 474 568.5)" fill="#5fd36f"/><ellipse cx="426" cy="522.6" rx="26" ry="11" transform="rotate(-30 426 522.6)" fill="#5fd36f"/><path d="M410 420 Q450 480 490 420 L472 394 L450 416 L428 394 Z" fill="#ff3d8b"/><circle cx="450" cy="390" r="22" fill="#ff3d8b"/></g><g class="grow" style="--d:3.32s;transform-origin:605px 690px"><path class="stem" d="M605 690 V440" /><ellipse cx="581" cy="620.0" rx="26" ry="11" transform="rotate(-30 581 620.0)" fill="#3fbf5a"/><ellipse cx="629" cy="577.5" rx="26" ry="11" transform="rotate(30 629 577.5)" fill="#5fd36f"/><ellipse cx="581" cy="535.0" rx="26" ry="11" transform="rotate(-30 581 535.0)" fill="#5fd36f"/><circle cx="605" cy="410" r="46" fill="#ffd23f"/><circle cx="605" cy="410" r="22" fill="#0b2a17"/></g><g class="grow" style="--d:3.50s;transform-origin:700px 690px"><path class="stem" d="M700 690 V490" /><ellipse cx="676" cy="634.0" rx="26" ry="11" transform="rotate(-30 676 634.0)" fill="#3fbf5a"/><ellipse cx="724" cy="600.0" rx="26" ry="11" transform="rotate(30 724 600.0)" fill="#5fd36f"/><ellipse cx="676" cy="566.0" rx="26" ry="11" transform="rotate(-30 676 566.0)" fill="#5fd36f"/><circle cx="700" cy="480" r="15" fill="#b98cff"/><circle cx="700" cy="506" r="13" fill="#b98cff"/><circle cx="700" cy="532" r="11" fill="#b98cff"/><circle cx="700" cy="558" r="9" fill="#b98cff"/></g><g class="grow" style="--d:3.68s;transform-origin:790px 690px"><path class="stem" d="M790 690 V550" /><ellipse cx="766" cy="650.8" rx="26" ry="11" transform="rotate(-30 766 650.8)" fill="#3fbf5a"/><ellipse cx="814" cy="627.0" rx="26" ry="11" transform="rotate(30 814 627.0)" fill="#5fd36f"/><circle cx="790" cy="538" r="16" fill="#c6ff6b"/></g><g class="grow" style="--d:3.86s;transform-origin:372px 690px"><path class="stem" d="M372 690 V540" /><ellipse cx="348" cy="648.0" rx="26" ry="11" transform="rotate(-30 348 648.0)" fill="#3fbf5a"/><ellipse cx="396" cy="622.5" rx="26" ry="11" transform="rotate(30 396 622.5)" fill="#5fd36f"/><circle cx="372" cy="528" r="16" fill="#ffd23f"/></g><g class="grow" style="--d:4.04s;transform-origin:530px 690px"><path class="stem" d="M530 690 V520" /><ellipse cx="506" cy="642.4" rx="26" ry="11" transform="rotate(-30 506 642.4)" fill="#3fbf5a"/><ellipse cx="554" cy="613.5" rx="26" ry="11" transform="rotate(30 554 613.5)" fill="#5fd36f"/><ellipse cx="506" cy="584.6" rx="26" ry="11" transform="rotate(-30 506 584.6)" fill="#5fd36f"/><path d="M494 510 A36 36 0 0 0 566 510 Z" fill="#ff6fb5"/><circle cx="530" cy="496" r="14" fill="#ffe680"/></g></g><circle class="spark" style="--d:3.8s" cx="160" cy="520" r="4" fill="#ffd23f"/><circle class="spark" style="--d:4.1s" cx="330" cy="500" r="4" fill="#ff4fa0"/><circle class="spark" style="--d:4.4s" cx="520" cy="470" r="4" fill="#ffd23f"/><circle class="spark" style="--d:4.7s" cx="640" cy="505" r="4" fill="#9be86b"/><circle class="spark" style="--d:5.0s" cx="740" cy="540" r="4" fill="#ff9a76"/></svg>
+    </section>
+
+    <section class="shelf" id="lab">
+      <h2>The Lab</h2>
+      <p>Each app starts here as a seedling. Here's what's growing.</p>
+      <!-- App names stay generic until Legal clears each one for public use. -->
+      <ul class="pots">
+        <li><span class="tag">Growing</span><h3>A card game</h3><p>A friendly solitaire for grown-ups, with stories between hands.</p></li>
+        <li><span class="tag">Growing</span><h3>A coloring storybook</h3><p>A gentle coloring book for kids, made for Apple's Kids Category.</p></li>
+        <li><span class="tag">Seedling</span><h3>More on the way</h3><p>New ideas sprout here first.</p></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer><a href="/support/">Support</a><a href="/contact/">Contact</a><span>© 2026 KD Farm and Garden LLC, Texas</span></footer>
+</div>
 </body>
 </html>
