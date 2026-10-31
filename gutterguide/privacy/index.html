@@ -73,7 +73,10 @@ Google Cloud keeps standard request logs (such as IP address and time)
 for up to 30 days for security and troubleshooting.</li>
 <li><strong>Public map data sources</strong> help us fetch public
 elevation data and building outlines. The U.S. Geological Survey's National
-Map and OpenStreetMap's Overpass service receive the home's map coordinates.
+Map and OpenStreetMap's Overpass service (overpass-api.de, or its
+kumi.systems mirror) receive the home's map coordinates directly from your
+phone, so they also see your device's IP address; their own privacy
+policies apply.
 Our roof-data service downloads public lidar data hosted on Amazon Web
 Services in small blocks covering the area around the home, so Amazon can
 see which general area was requested but not who asked. It downloads
