@@ -22,7 +22,7 @@
 <body>
 <main>
 <h1 id="gutterguide-privacy-policy">GutterGuide Privacy Policy</h1>
-<p>Effective date: October 28, 2026</p>
+<p>Effective date: October 31, 2026</p>
 <p>GutterGuide is made by KD Farm and Garden LLC, a Texas limited
 liability company ("we", "us"). GutterGuide is a measuring tool for
 gutter and roofing work ("you" are the person using it).</p>
@@ -69,12 +69,14 @@ receives the home's map coordinates to look up public elevation data. It
 doesn't store the coordinates or tie them to you. Like any web service,
 Google Cloud keeps standard request logs (such as IP address and time)
 for up to 30 days for security and troubleshooting.</li>
-<li><strong>Public map data sources</strong> receive the home's map
-coordinates to fetch public elevation data and building outlines: the
-U.S. Geological Survey's National Map, OpenStreetMap's Overpass service,
-and public datasets hosted on Amazon Web Services (and, if added,
-Microsoft's public building footprints). Some of these are contacted by
-our roof-data service rather than your phone.</li>
+<li><strong>Public map data sources</strong> help us fetch public
+elevation data and building outlines. The U.S. Geological Survey's National
+Map and OpenStreetMap's Overpass service receive the home's map coordinates.
+Our roof-data service downloads public lidar data hosted on Amazon Web
+Services in small blocks covering the area around the home, so Amazon can
+see which general area was requested but not who asked. It downloads
+Microsoft's public building footprints in large tiles covering many square
+miles, so your exact location is not sent to Microsoft.</li>
 <li><strong>Apple</strong> handles any App Store purchases. We never see
 your card details.</li>
 </ul>
