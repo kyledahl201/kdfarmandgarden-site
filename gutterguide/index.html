@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GutterGuide: Gutter Estimator</title>
+<meta name="description" content="Gutter footage, downspouts and a material list from an address. Free for iPhone and iPad.">
+<style>
+:root{--navy:#0E1B33;--navy2:#08101F;--green:#688F44;--lgreen:#A9C489;--ice:#D5DCE6;--muted:#8E9AAD;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--navy);color:var(--white);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:32px 20px 48px}
+.logo{height:40px;width:auto;display:block}
+.hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin-top:36px}
+@media(min-width:820px){.hero{grid-template-columns:1.15fr .85fr}}
+.kicker{color:var(--lgreen);font-weight:700;letter-spacing:.12em;font-size:13px;text-transform:uppercase;margin:0 0 10px}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.08;margin:0 0 16px;letter-spacing:-.01em}
+.sub{color:var(--ice);font-size:19px;margin:0 0 24px}
+.status{background:#fff;color:var(--navy);border-radius:18px;padding:22px 24px}
+.status .soon{color:var(--green);font-weight:800;letter-spacing:.12em;font-size:13px;margin:0}
+.status h2{font-size:28px;margin:4px 0 6px}
+.status p{margin:0;color:#5A6475}
+.store{display:inline-block;margin-top:14px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:12px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding:0;list-style:none}
+.chips li{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-weight:600;font-size:15px}
+.chips li:first-child{background:var(--green);border-color:var(--green)}
+.phone{justify-self:center;width:min(300px,78vw);border-radius:44px;border:10px solid #16181C;box-shadow:0 24px 60px rgba(0,0,0,.45);display:block;height:auto}
+.features{display:grid;gap:14px;grid-template-columns:1fr;margin:48px 0 0;padding:0;list-style:none}
+@media(min-width:700px){.features{grid-template-columns:1fr 1fr}}
+.features li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 20px}
+.features b{display:block;font-size:18px;margin-bottom:4px}
+.features span{color:var(--ice);font-size:16px}
+.fine{color:var(--muted);font-size:14px;margin-top:36px}
+footer{color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding-top:18px}
+footer a{color:var(--lgreen)}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="logo.svg" alt="GutterGuide" width="204" height="40">
+  <section class="hero">
+    <div>
+      <p class="kicker">For gutter and roofing sales reps</p>
+      <h1>Gutter footage before you get out of the truck</h1>
+      <p class="sub">Type an address. Get gutter footage, downspouts and a material list in under a minute, then show the homeowner a clean diagram.</p>
+
+      <!-- PRE-LAUNCH: keep this block until GutterGuide is live on the App Store. -->
+      <div class="status">
+        <p class="soon">COMING SOON</p>
+        <h2>to the App Store</h2>
+        <p>GutterGuide is in Apple's App Store review now. The download button will be right here the day it's live.</p>
+      </div>
+      <!-- LAUNCH DAY: replace the block above with:
+      <div class="status">
+        <p class="soon">NOW ON THE APP STORE</p>
+        <h2>Get GutterGuide</h2>
+        <a class="store" href="https://apps.apple.com/us/app/id6829027833">Download on the App Store</a>
+      </div>
+      (Swap the text button for Apple's official badge, unmodified.) -->
+
+      <ul class="chips"><li>Free</li><li>iPhone and iPad</li><li>No account needed</li></ul>
+    </div>
+    <img class="phone" src="app-plan.jpg" alt="GutterGuide showing a demo house: 128 ft of gutter, 90 ft of downspout, 6 downspouts" width="560" height="1216">
+  </section>
+
+  <ul class="features">
+    <li><b>Measure from the driveway</b><span>Footage on every eave with corners counted, plus downspouts placed for you.</span></li>
+    <li><b>Fix it with a tap</b><span>Tap any edge to set gutter, rake or none, or change its length. Add a garage in one tap.</span></li>
+    <li><b>Material list, done</b><span>Gutter, pipe, elbows, outlets, end caps and hangers, priced from your own sheet.</span></li>
+    <li><b>Show the homeowner</b><span>A clean roof diagram with every run labeled, shared as a one-page PDF.</span></li>
+  </ul>
+
+  <p class="fine">Works on U.S. addresses with public elevation data. If it can't read a roof, trace it yourself. Measurements are estimates from public data, so verify before you order material. Uses open data from OpenStreetMap contributors, Microsoft building footprints and USGS.</p>
+  <footer>© 2026 KD Farm and Garden LLC · <a href="/gutterguide/privacy/">Privacy</a> · <a href="/support/">Support</a></footer>
+</main>
+</body>
+</html>
