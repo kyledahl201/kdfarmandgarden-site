@@ -20,7 +20,7 @@ h1{font-size:clamp(34px,6vw,54px);line-height:1.08;margin:0 0 16px;letter-spacin
 .status .soon{color:var(--green);font-weight:800;letter-spacing:.12em;font-size:13px;margin:0}
 .status h2{font-size:28px;margin:4px 0 6px}
 .status p{margin:0;color:#5A6475}
-.store{display:inline-block;margin-top:14px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:12px}
+.badge{display:inline-block;margin-top:12px}.badge img{display:block;height:60px;width:auto}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding:0;list-style:none}
 .chips li{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-weight:600;font-size:15px}
 .chips li:first-child{background:var(--green);border-color:var(--green)}
@@ -44,19 +44,12 @@ footer a{color:var(--lgreen)}
       <h1>Gutter footage before you get out of the truck</h1>
       <p class="sub">Type an address. Get gutter footage, downspouts and a material list in about a minute, then show the homeowner a clean diagram.</p>
 
-      <!-- PRE-LAUNCH: keep this block until GutterGuide is live on the App Store. -->
-      <div class="status">
-        <p class="soon">COMING SOON</p>
-        <h2>to the App Store</h2>
-        <p>GutterGuide is in Apple's App Store review now. The download button will be right here the day it's live.</p>
-      </div>
-      <!-- LAUNCH DAY: replace the block above with:
+      <!-- LIVE: App Store badge (Apple artwork, unmodified). -->
       <div class="status">
         <p class="soon">NOW ON THE APP STORE</p>
         <h2>Get GutterGuide</h2>
-        <a class="store" href="https://apps.apple.com/us/app/id6829027833">Download on the App Store</a>
+        <a class="badge" href="https://apps.apple.com/us/app/id6829027833"><img src="app-store-badge.svg" alt="Download on the App Store" width="180" height="60"></a>
       </div>
-      (Swap the text button for Apple's official badge, unmodified.) -->
 
       <ul class="chips"><li>Free</li><li>iPhone and iPad</li><li>No account needed</li></ul>
     </div>
